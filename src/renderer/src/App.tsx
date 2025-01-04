@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
+/* import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import floor1Image from './assets/building-flour1.svg'
-import floor2Image from './assets/building-flour2.svg'
+import floor2Image from './assets/flour2.svg'
 
 interface Contact {
   contactName: string
@@ -79,13 +79,13 @@ const DropdownItem = styled.li<{ highlighted: boolean }>`
 const MapContainer = styled.div`
   position: relative;
   width: 100%;
-  max-width: 1400px;
+  max-width: 17600px;
   margin-top: 10rem;
 `
 
 const MapImage = styled.img`
   width: 100%;
-  z-index: 1; /* Ensure the map is on top */
+  z-index: 1;
 `
 
 const Marker = styled.div<{ x: number; y: number }>`
@@ -97,18 +97,18 @@ const Marker = styled.div<{ x: number; y: number }>`
   top: ${(props): number => props.y}px;
   left: ${(props): number => props.x}px;
   transform: translate(-50%, -50%);
-  z-index: 2; /* Ensure the marker is on top of the map */
+  z-index: 2;
 `
 
 const ContactsTable = styled.table`
-  position: absolute; /* Makes the table static relative to the container */
-  top: 0; /* Adjust position relative to the map */
+  position: absolute;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center the table behind the map */
+  transform: translate(-50%, -50%);
   width: 100%;
   opacity: 0.3;
-  pointer-events: none; /* Disable interactions with the table */
-  z-index: -1; /* Send the table behind the map */
+  pointer-events: none;
+  z-index: -1;
   border-collapse: collapse;
   border: 1px solid #ccc;
   font-size: 10px;
@@ -137,96 +137,10 @@ const TableCell = styled.td`
 
 const BuildingMap: React.FC = () => {
   const contacts: Contact[] = [
-    { contactName: 'John Doe', email: 'john@example.com', roomNumber: '1', floorNumber: 1 },
-    { contactName: 'Jane Smith', email: 'jane@example.com', roomNumber: '2', floorNumber: 1 },
-    { contactName: 'James Brown', email: 'james@example.com', roomNumber: '3', floorNumber: 2 },
-    { contactName: 'Test Teste', email: 'test@example.com', roomNumber: '4', floorNumber: 2 },
-    { contactName: 'Cfhdf Dfhfd', email: 'cfhdf@example.com', roomNumber: '5', floorNumber: 1 },
-    { contactName: 'Asdas Asdas', email: 'asdas@example.com', roomNumber: '6', floorNumber: 1 },
-    { contactName: 'Sdgsd Sdgsdg', email: 'sdgsd@example.com', roomNumber: '7', floorNumber: 1 },
-    { contactName: 'Jill Gdsxg', email: 'jill@example.com', roomNumber: '8', floorNumber: 1 },
-    { contactName: 'Erty Dfgdf', email: 'erty@example.com', roomNumber: '9', floorNumber: 1 },
-    {
-      contactName: 'Asdas Hdfh',
-      email: 'asdas_hdfh@example.com',
-      roomNumber: '10',
-      floorNumber: 2
-    },
-    { contactName: 'Alex Johnson', email: 'alex@example.com', roomNumber: '11', floorNumber: 2 },
-    { contactName: 'Chris Green', email: 'chris@example.com', roomNumber: '12', floorNumber: 3 },
-    { contactName: 'Pat White', email: 'pat@example.com', roomNumber: '13', floorNumber: 3 },
-    { contactName: 'Morgan Black', email: 'morgan@example.com', roomNumber: '14', floorNumber: 3 },
-    { contactName: 'Taylor Gray', email: 'taylor@example.com', roomNumber: '15', floorNumber: 4 },
-    { contactName: 'Jordan Blue', email: 'jordan@example.com', roomNumber: '16', floorNumber: 4 },
-    { contactName: 'Riley Brown', email: 'riley@example.com', roomNumber: '17', floorNumber: 4 },
-    { contactName: 'Jamie Green', email: 'jamie@example.com', roomNumber: '18', floorNumber: 4 },
-    { contactName: 'Casey Red', email: 'casey@example.com', roomNumber: '19', floorNumber: 5 },
-    { contactName: 'Robin Yellow', email: 'robin@example.com', roomNumber: '20', floorNumber: 5 },
-    { contactName: 'Hunter Orange', email: 'hunter@example.com', roomNumber: '21', floorNumber: 1 },
-    { contactName: 'Peyton Purple', email: 'peyton@example.com', roomNumber: '22', floorNumber: 2 },
-    { contactName: 'Corey Pink', email: 'corey@example.com', roomNumber: '23', floorNumber: 2 },
-    { contactName: 'Leslie Cyan', email: 'leslie@example.com', roomNumber: '24', floorNumber: 3 },
-    { contactName: 'Cameron Lime', email: 'cameron@example.com', roomNumber: '25', floorNumber: 3 },
-    { contactName: 'Taylor Violet', email: 'violet@example.com', roomNumber: '26', floorNumber: 4 },
-    { contactName: 'Sydney Aqua', email: 'aqua@example.com', roomNumber: '27', floorNumber: 5 },
-    { contactName: 'Dakota Indigo', email: 'indigo@example.com', roomNumber: '28', floorNumber: 1 },
-    { contactName: 'Quinn Magenta', email: 'quinn@example.com', roomNumber: '29', floorNumber: 1 },
-    { contactName: 'Alex Gold', email: 'gold@example.com', roomNumber: '30', floorNumber: 2 },
-    { contactName: 'Sam Silver', email: 'silver@example.com', roomNumber: '31', floorNumber: 2 },
-    {
-      contactName: 'Jordan Platinum',
-      email: 'platinum@example.com',
-      roomNumber: '32',
-      floorNumber: 3
-    },
-    { contactName: 'Taylor Ruby', email: 'ruby@example.com', roomNumber: '33', floorNumber: 3 },
-    {
-      contactName: 'Morgan Sapphire',
-      email: 'sapphire@example.com',
-      roomNumber: '34',
-      floorNumber: 4
-    },
-    { contactName: 'Pat Emerald', email: 'emerald@example.com', roomNumber: '35', floorNumber: 5 },
-    { contactName: 'Riley Amber', email: 'amber@example.com', roomNumber: '36', floorNumber: 5 },
-    { contactName: 'Jordan Topaz', email: 'topaz@example.com', roomNumber: '37', floorNumber: 1 },
-    { contactName: 'Cameron Jade', email: 'jade@example.com', roomNumber: '38', floorNumber: 2 },
-    {
-      contactName: 'Taylor Diamond',
-      email: 'diamond@example.com',
-      roomNumber: '39',
-      floorNumber: 2
-    },
-    { contactName: 'Chris Quartz', email: 'quartz@example.com', roomNumber: '40', floorNumber: 3 },
-    {
-      contactName: 'Alex Amethyst',
-      email: 'amethyst@example.com',
-      roomNumber: '41',
-      floorNumber: 4
-    },
-    { contactName: 'Casey Garnet', email: 'garnet@example.com', roomNumber: '42', floorNumber: 5 },
-    { contactName: 'Robin Coral', email: 'coral@example.com', roomNumber: '43', floorNumber: 1 },
-    { contactName: 'Hunter Pearl', email: 'pearl@example.com', roomNumber: '44', floorNumber: 2 },
-    { contactName: 'Sydney Onyx', email: 'onyx@example.com', roomNumber: '45', floorNumber: 3 },
-    { contactName: 'Dakota Lapis', email: 'lapis@example.com', roomNumber: '46', floorNumber: 4 },
-    {
-      contactName: 'Quinn Citrine',
-      email: 'citrine@example.com',
-      roomNumber: '47',
-      floorNumber: 5
-    },
-    {
-      contactName: 'Leslie Turquoise',
-      email: 'turquoise@example.com',
-      roomNumber: '48',
-      floorNumber: 1
-    },
-    { contactName: 'Peyton Opal', email: 'opal@example.com', roomNumber: '49', floorNumber: 2 },
-    {
-      contactName: 'Corey Moonstone',
-      email: 'moonstone@example.com',
-      roomNumber: '50',
-      floorNumber: 3
-    }
+    { contactName: 'John Doe', email: 'john@example.com', roomNumber: '1', floorNumber: 1115 },
+    { contactName: 'Jane Smith', email: 'jane@example.com', roomNumber: '2', floorNumber: 904 },
+    { contactName: 'James Brown', email: 'james@example.com', roomNumber: '3', floorNumber: 1024 },
+    { contactName: 'Test Teste', email: 'test@example.com', roomNumber: '4', floorNumber: 901 }
   ]
 
   const [searchText, setSearchText] = useState<string>('')
@@ -252,6 +166,7 @@ const BuildingMap: React.FC = () => {
       setFilteredContacts([])
     }
   }
+  console.log(currentFloor)
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (filteredContacts.length > 0) {
@@ -301,8 +216,8 @@ const BuildingMap: React.FC = () => {
 
   const getRoomPosition = (roomNumber: string): { x: number; y: number } => {
     const roomPositions: Record<string, { x: number; y: number }> = {
-      '1': { x: 240, y: -30 },
-      '2': { x: 95, y: 10 },
+      '1': { x: 280, y: 180 },
+      '2': { x: 1650, y: 120 },
       '3': { x: 160, y: 10 },
       '4': { x: 235, y: 50 }
     }
@@ -370,3 +285,17 @@ const BuildingMap: React.FC = () => {
 }
 
 export default BuildingMap
+ */
+
+import Templates from './templates/Templates'
+import Navigation from './navigation/Navigation'
+
+function App(): JSX.Element {
+  return (
+    <Templates>
+      <Navigation />
+    </Templates>
+  )
+}
+
+export default App
