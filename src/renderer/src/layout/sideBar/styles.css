@@ -1,0 +1,49 @@
+.user-details {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--card-background);
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.user-icon {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+}
+
+.user-info {
+  flex-grow: 1;
+}
+
+.user-info p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.user-info p strong {
+  font-weight: 600;
+}
+
+.logout-button {
+  padding: 6px 12px;
+  background-color: var(--error-color);
+  color: var(--muted-text-color);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c42b31; /* Darker red for hover effect */
+}
