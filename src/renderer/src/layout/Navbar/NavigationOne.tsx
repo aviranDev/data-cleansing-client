@@ -13,16 +13,14 @@ export type GeneralNavType = Map<
 
 interface NavigationOneProps {
   navigation: GeneralNavType
-  date: React.ReactNode
 }
 
-const NavigationOne: React.FC<NavigationOneProps> = ({ navigation, date }) => {
+const NavigationOne: React.FC<NavigationOneProps> = ({ navigation }) => {
   return (
     <Fragment>
       {Array.from(navigation).map(([key, { name: Icon, link, title }]) => (
         <Fragment key={key}>{renderNavLink(key, Icon, link, title)}</Fragment>
       ))}
-      <NavbarStyle.NavLinkInternal2>{date}</NavbarStyle.NavLinkInternal2>
     </Fragment>
   )
 }

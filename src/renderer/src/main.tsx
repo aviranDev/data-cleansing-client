@@ -4,9 +4,9 @@ import { BrowserRouter } from 'react-router-dom'
 import AuthProvider from './context/LoginProvider'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
-    <AuthProvider>
+  <AuthProvider>
+    <BrowserRouter>
       <App />
-    </AuthProvider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </AuthProvider>
 )

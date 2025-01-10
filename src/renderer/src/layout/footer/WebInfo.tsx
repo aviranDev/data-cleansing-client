@@ -1,6 +1,6 @@
-import FooterStyle from './FooterStyles';
-import { validateString, ValidationErrorMessage } from '../../utils/validateString';
-import { Fragment } from 'react';
+import FooterStyle from './FooterStyles'
+import { validateString, ValidationErrorMessage } from '../../utils/validateString'
+import { Fragment } from 'react'
 
 /**
  * FooterWebInfo component displays a list of web links in the footer.
@@ -9,7 +9,11 @@ import { Fragment } from 'react';
  * @param {Map<string, { name: string; link: string }>} props.links - Map of link keys to their information.
  * @returns {JSX.Element} FooterWebInfo component.
  */
-function FooterWebInfo({ links }: { links: Map<string, { name: string; link: string }> }): JSX.Element {
+function FooterWebInfo({
+  links
+}: {
+  links: Map<string, { name: string; link: string }>
+}): JSX.Element {
   // Validate the structure of the Map
   if (!(links instanceof Map)) {
     return (
@@ -17,7 +21,7 @@ function FooterWebInfo({ links }: { links: Map<string, { name: string; link: str
       <ValidationErrorMessage
         message={`Invalid structure for 'links'. Expected a Map, received: ${JSON.stringify(links)}`}
       />
-    );
+    )
   }
   return (
     // Render the list of links
@@ -29,12 +33,14 @@ function FooterWebInfo({ links }: { links: Map<string, { name: string; link: str
             <FooterStyle.LinksWebInfo to={value.link}>{value.name}</FooterStyle.LinksWebInfo>
           ) : (
             // Invalid name or link: display an error message
-            <ValidationErrorMessage message={`Invalid name or link provided for '${key}': ${JSON.stringify(value)}`} />
+            <ValidationErrorMessage
+              message={`Invalid name or link provided for '${key}': ${JSON.stringify(value)}`}
+            />
           )}
         </Fragment>
       ))}
     </>
-  );
+  )
 }
 
-export default FooterWebInfo;
+export default FooterWebInfo

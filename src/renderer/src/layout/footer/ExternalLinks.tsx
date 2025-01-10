@@ -1,12 +1,12 @@
-import FooterStyle from './FooterStyles';
-import { ReactNode, Fragment } from 'react';
-import { validateString, ValidationErrorMessage } from '../../utils/validateString';
+import FooterStyle from './FooterStyles'
+import { ReactNode, Fragment } from 'react'
+import { validateString, ValidationErrorMessage } from '../../utils/validateString'
 
 // Type for external link information.
 type LinkInfo = {
-  image?: ReactNode;
-  href?: string;
-};
+  image?: ReactNode
+  href?: string
+}
 
 /**
  * FooterExternalLinks component displays external links in the footer.
@@ -24,7 +24,7 @@ function FooterExternalLinks({ payload }: { payload: Map<string, LinkInfo> }): J
       <ValidationErrorMessage
         message={`Invalid structure for 'payload'. Expected a Map, received: ${JSON.stringify(payload)}`}
       />
-    );
+    )
   }
 
   return (
@@ -43,7 +43,7 @@ function FooterExternalLinks({ payload }: { payload: Map<string, LinkInfo> }): J
         </Fragment>
       ))}
     </>
-  );
+  )
 }
 
-export default FooterExternalLinks;
+export default FooterExternalLinks

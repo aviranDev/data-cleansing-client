@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 // Navbar styles
 const NavbarStyle = {
   Wrapper: styled.div<{ $isVisible: boolean }>`
     grid-area: nav; /* No quotes needed */
-    background: var(--navbar-footer-background); /* CSS variables should not be in quotes */
+    background: var(--secondary-color); /* CSS variables should not be in quotes */
     padding: 0;
     transition:
       transform 0.5s ease,
@@ -118,7 +118,7 @@ const NavbarStyle = {
     text-decoration: none;
     padding: 20px;
     position: relative;
-  `,
-};
+  `
+}
 
-export default NavbarStyle;
+export default NavbarStyle

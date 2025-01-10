@@ -1,23 +1,23 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { DetailedHTMLProps, HTMLAttributes } from 'react'
 
 interface FooterProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  maxW?: string;
-  pad?: string;
-  imgW?: string;
-  m?: string;
-  fSize?: string;
-  hover?: string;
-  mBottom?: string;
-  bTop?: string;
+  maxW?: string
+  pad?: string
+  imgW?: string
+  m?: string
+  fSize?: string
+  hover?: string
+  mBottom?: string
+  bTop?: string
 }
 
 const FooterStyle = {
   // Wrapper for the entire Footer section
   Wrapper: styled.div<Partial<FooterProps>>`
     grid-area: footer;
-    background: var(--navbar-footer-background);
+    background: var(--secondary-color);
     padding: ${({ pad }): string => pad ?? ''};
     border-top: 1px solid var(--accent-color);
     margin-top: auto;
@@ -72,8 +72,8 @@ const FooterStyle = {
 
   // Title styling for internal links
   InternalLinkTitle: styled.h2<Partial<FooterProps>>`
-    margin-bottom: ${({ mBottom }): string => mBottom ?? '16px'};
-    color: var(--background-color);
+    margin-bottom: ${({ mBottom }): string => mBottom ?? '8px'};
+    color: var(--accent-color);
     font-size: ${({ fSize }): string => fSize ?? '22px'};
     text-transform: capitalize;
     align-self: flex-start;
@@ -82,18 +82,21 @@ const FooterStyle = {
 
   // Styling for individual internal links
   InternalLinkItem: styled(Link)<Partial<FooterProps>>`
-    color: var(--background-color);
+    color: var(--text-color);
     margin-bottom: ${({ mBottom }): string => mBottom ?? '0.7rem'};
     font-size: ${({ fSize }): string => fSize ?? '15px'};
     text-decoration: none;
-    align-self: flex-start;
-    line-height: 1;
+    text-shadow: 1px 1px var(--shadow-color);
     text-transform: capitalize;
+
+    align-self: flex-start;
+    line-height: 1.2;
     font-weight: bold;
     transition: 0.3s ease-out;
 
     &:hover {
-      color: var(--secondary-color);
+      color: var(--success-color);
+      text-shadow: 2px 2px var(--shadow-color);
     }
   `,
 
@@ -107,11 +110,12 @@ const FooterStyle = {
 
   // Styling for web links
   LinksWebInfo: styled(Link)<Partial<FooterProps>>`
+    color: var(--text-color);
     margin-right: ${({ m }): string => m ?? '4rem'};
-    color: var(--muted-text-color);
     font-size: ${({ fSize }): string => fSize ?? '15px'};
     text-decoration: none;
     text-transform: capitalize;
+    text-shadow: 1px 1px var(--shadow-color);
 
     &:hover {
       color: var(--secondary-color);
@@ -126,7 +130,7 @@ const FooterStyle = {
     .current-year {
       margin-right: 5px;
     }
-  `,
-};
+  `
+}
 
-export default FooterStyle;
+export default FooterStyle
