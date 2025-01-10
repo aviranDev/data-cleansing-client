@@ -5,7 +5,7 @@ import Sidebar from '@renderer/layout/sideBar/Sidebar'
 import Footer from '@renderer/layout/footer/Footer'
 import Login from '../pages/Login'
 import { useLogin } from '../context/LoginProvider'
-
+import Navbar from '@renderer/layout/Navbar/Navbar'
 interface TemplatesProps {
   children: ReactNode
 }
@@ -17,11 +17,12 @@ const Templates: React.FC<TemplatesProps> = ({ children }) => {
     <LayoutContainer>
       <GlobalStyles />
       {isLoggedIn ? (
-        <div>
+        <>
+          <Navbar />
           <Sidebar />
           <Content>{children}</Content>
           <Footer />
-        </div>
+        </>
       ) : (
         <Login />
       )}

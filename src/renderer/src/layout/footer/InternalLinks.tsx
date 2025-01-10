@@ -1,6 +1,6 @@
-import FooterStyle from './FooterStyles';
-import { validateString, ValidationErrorMessage } from '../../utils/validateString';
-import { Fragment } from 'react';
+import FooterStyle from './FooterStyles'
+import { validateString, ValidationErrorMessage } from '../../utils/validateString'
+import { Fragment } from 'react'
 
 /**
  * FooterInternalLinks component displays a list of internal links in the footer.
@@ -10,9 +10,9 @@ import { Fragment } from 'react';
  * @returns {JSX.Element} FooterInternalLinks component.
  */
 function FooterInternalLinks({
-  payload,
+  payload
 }: {
-  payload: Map<string, { links: { path: string; to: string }[] }>;
+  payload: Map<string, { links: { path: string; to: string }[] }>
 }): JSX.Element {
   // Validate the structure of the payload to ensure it is a Map
   if (!(payload instanceof Map)) {
@@ -21,7 +21,7 @@ function FooterInternalLinks({
       <ValidationErrorMessage
         message={`Invalid structure for 'links'. Expected a Map, received: ${JSON.stringify(payload)}`}
       />
-    );
+    )
   }
 
   return (
@@ -34,14 +34,18 @@ function FooterInternalLinks({
               <FooterStyle.InternalLinkTitle>{key}</FooterStyle.InternalLinkTitle>
             ) : (
               // Display an error message if the title is invalid
-              <ValidationErrorMessage message={`Invalid title provided for internal links section: ${key}`} />
+              <ValidationErrorMessage
+                message={`Invalid title provided for internal links section: ${key}`}
+              />
             )}
 
             {value.links.map((val) => (
               <Fragment key={val.path}>
                 {/* Validate the link path and 'to' property */}
                 {validateString(val.path) && validateString(val.to) ? (
-                  <FooterStyle.InternalLinkItem to={val.to}>{val.path}</FooterStyle.InternalLinkItem>
+                  <FooterStyle.InternalLinkItem to={val.to}>
+                    {val.path}
+                  </FooterStyle.InternalLinkItem>
                 ) : (
                   // Display an error message if the path or 'to' property is invalid
                   <ValidationErrorMessage
@@ -54,7 +58,7 @@ function FooterInternalLinks({
         </Fragment>
       ))}
     </>
-  );
+  )
 }
 
-export default FooterInternalLinks;
+export default FooterInternalLinks

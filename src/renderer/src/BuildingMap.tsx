@@ -47,48 +47,51 @@ const BuildingMap: React.FC = () => {
       />
 
       {/* SVG Map */}
-<img src="/src/assets/building.drawio.svg" alt="Building Map" style={{ width: '500px', height: '500px' }} />
-        {/* Rooms (Static map) */}
-        <rect id="room-101" x="50" y="50" width="100" height="100" fill="lightblue" />
-        <rect id="room-102" x="150" y="50" width="100" height="100" fill="lightgreen" />
-        <rect id="room-103" x="50" y="150" width="100" height="100" fill="lightcoral" />
-        <rect id="room-104" x="150" y="150" width="100" height="100" fill="lightyellow" />
+      <img
+        src="/src/assets/building.drawio.svg"
+        alt="Building Map"
+        style={{ width: '500px', height: '500px' }}
+      />
+      {/* Rooms (Static map) */}
+      <rect id="room-101" x="50" y="50" width="100" height="100" fill="lightblue" />
+      <rect id="room-102" x="150" y="50" width="100" height="100" fill="lightgreen" />
+      <rect id="room-103" x="50" y="150" width="100" height="100" fill="lightcoral" />
+      <rect id="room-104" x="150" y="150" width="100" height="100" fill="lightyellow" />
 
-        {/* Displaying the contacts on the map */}
-        {filteredContacts.map((contact) => {
-          const roomId = `room-${contact.roomNumber.replace(' ', '-').toLowerCase()}`
-          const roomElement = document.getElementById(roomId)
+      {/* Displaying the contacts on the map */}
+      {filteredContacts.map((contact) => {
+        const roomId = `room-${contact.roomNumber.replace(' ', '-').toLowerCase()}`
+        const roomElement = document.getElementById(roomId)
 
-          if (roomElement) {
-            // Get room's bounding box for positioning
-            const { x, y, width, height } = roomElement.getBoundingClientRect()
+        if (roomElement) {
+          // Get room's bounding box for positioning
+          const { x, y, width, height } = roomElement.getBoundingClientRect()
 
-            return (
-              <g key={contact.email}>
-                {/* Marker for the contact */}
-                <circle
-                  cx={x + width / 2}
-                  cy={y + height / 2}
-                  r="10"
-                  fill="blue"
-                  stroke="white"
-                  strokeWidth="2"
-                />
-                <text
-                  x={x + width / 2}
-                  y={y + height / 2 + 15}
-                  fontSize="12"
-                  textAnchor="middle"
-                  fill="black"
-                >
-                  {contact.contactName}
-                </text>
-              </g>
-            )
-          }
-          return null
-        })}
-      </svg>
+          return (
+            <g key={contact.email}>
+              {/* Marker for the contact */}
+              <circle
+                cx={x + width / 2}
+                cy={y + height / 2}
+                r="10"
+                fill="blue"
+                stroke="white"
+                strokeWidth="2"
+              />
+              <text
+                x={x + width / 2}
+                y={y + height / 2 + 15}
+                fontSize="12"
+                textAnchor="middle"
+                fill="black"
+              >
+                {contact.contactName}
+              </text>
+            </g>
+          )
+        }
+        return null
+      })}
     </div>
   )
 }

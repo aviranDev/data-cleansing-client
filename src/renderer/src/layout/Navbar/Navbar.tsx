@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import NavbarStyle from './navStyle'
-import { roleNavigation } from './navData'
-// import NavigationOne from './NavigationOne'
+import { generalNavigation, roleNavigation } from './navData'
+import NavigationOne from './NavigationOne'
 import NavigationTwo from './NavigationTwo'
 import { useLogin } from '@renderer/context/LoginProvider'
 
@@ -35,7 +35,9 @@ export const Navbar = (): JSX.Element => {
   return (
     <NavbarStyle.Wrapper $isVisible={isVisible}>
       <NavbarStyle.InnerContainer>
-        <NavbarStyle.NavContainer order={0}></NavbarStyle.NavContainer>
+        <NavbarStyle.NavContainer order={0}>
+          <NavigationOne navigation={generalNavigation} />
+        </NavbarStyle.NavContainer>
         <NavbarStyle.NavContainer order={1}>
           <NavigationTwo user={user} isLoggedIn={isLoggedIn} navigation={roleNavigation} />
         </NavbarStyle.NavContainer>

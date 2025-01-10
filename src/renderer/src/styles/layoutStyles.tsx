@@ -11,19 +11,23 @@ export const GlobalStyles = createGlobalStyle`
 
   /* CSS Variables */
   :root {
-    --primary-color: #000000; /* Dark Black */
-    --secondary-color: #808080; /* Gray for retro feel */
-    --accent-color: #FFFFFF; /* White */
-    --background-color: #C0C0C0; /* Light gray for retro background */
+  --primary-color: #000000; /* Dark Black */
+  --secondary-color: #808080; /* Gray for retro feel */
+  --accent-color: #FFFFFF; /* White */
+  --background-color: #C0C0C0; /* Light gray for retro background */
 
-    --text-color: #000000; /* Black for text */
-    --border-color: #404040; /* Dark gray for prominent borders */
-    --shadow-color: #808080; /* Light shadow for retro effect */
-    --success-color: #28a745; /* Green for success */
-    --warning-color: #ffc107; /* Yellow for warnings */
-    --error-color: #9d0e1c; /* Red for errors */
-    --button-background: #B0B0B0; /* Button background gray */
-    --navbar-footer-background: #1A1A1A; /* Darker black for Navbar/Footer */
+  --text-color: #000000; /* Black for text */
+  --border-color: #404040; /* Dark gray for prominent borders */
+  --shadow-color: #808080; /* Light shadow for retro effect */
+  --success-color: #28a745; /* Green for success */
+  --warning-color: #ffc107; /* Yellow for warnings */
+  --error-color: #9d0e1c; /* Red for errors */
+  --button-background: #B0B0B0; /* Button background gray */
+
+  /* Additional retro colors */
+  --teal-accent: #008080; /* 90s teal */
+  --mauve-accent: #800080; /* 90s purple */
+  --yellow-green-accent: #808000; /* Muted yellow-green */
   }
 
   body {
@@ -31,6 +35,7 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--text-color);
     font-size: 14px; /* Slightly smaller font size for retro feel */
     line-height: 1.4;
+    margin: 0;
   }
 
   /* This applies the scrollbar styles globally */

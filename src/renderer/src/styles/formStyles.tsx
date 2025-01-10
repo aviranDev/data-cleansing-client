@@ -9,7 +9,6 @@ export const FormWrapper = styled.div<{ height?: string }>`
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color);
   width: 100vw;
   padding: 0;
   margin: 0;
