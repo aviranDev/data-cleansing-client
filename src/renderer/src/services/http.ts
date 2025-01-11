@@ -74,9 +74,11 @@ instance.interceptors.response.use(
         return Promise.reject(error)
       }
 
+      console.log('Cookie is located')
       try {
         const newToken = await refreshAccessToken()
         originalRequest.headers.Authorization = `Bearer ${newToken}`
+        console.log('re-login')
         return axios(originalRequest)
       } catch (err) {
         removeLocalStorage('accessToken')
