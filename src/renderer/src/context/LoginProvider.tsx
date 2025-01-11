@@ -52,7 +52,7 @@ const AuthProvider: React.FC<LoginProviderProps> = ({ children }) => {
     fetchProfile()
   }, [user])
 
-  useEffect((): (() => void) => {
+  /*   useEffect((): (() => void) => {
     if (!user) return () => {} // Return a no-op function if user is not defined
 
     const interval = setInterval(
@@ -85,7 +85,7 @@ const AuthProvider: React.FC<LoginProviderProps> = ({ children }) => {
 
     // Return the cleanup function
     return (): void => clearInterval(interval)
-  }, [user])
+  }, [user]) */
 
   const login = async (data: Auth): Promise<SigninResponse> => {
     // eslint-disable-next-line no-useless-catch
