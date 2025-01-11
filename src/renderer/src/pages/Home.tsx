@@ -1,10 +1,9 @@
-import ContactSearchDropdown from './SearchBar'
+import SearchBar from '@renderer/components/SearchBar/SearchBar'
 
 const Home = (): JSX.Element => {
   return (
     <div>
-      <div>test</div>
-      <ContactSearchDropdown />
+      <SearchBar />
     </div>
   )
 }
