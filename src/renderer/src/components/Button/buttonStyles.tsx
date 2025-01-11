@@ -9,28 +9,39 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 // Define styles for the Button component using styled-components
 export const StyledButton = styled.button<ButtonProps>`
-  /* Common styles */
-  padding: 8px 16px;
+  /* Common styles for 90s button */
+  padding: 10px 20px;
   border: 2px solid #000;
-  box-shadow:
-    inset -2px -2px 0px #fff,
-    inset 2px 2px 0px #bdbdbd; /* Beveled effect */
   background-color: ${(props): string =>
-    props.$variant === 'primary' ? '#c0c0c0' : '#e0e0e0'}; /* Default 90s gray shades */
+    props.$variant === 'primary' ? '#d4d0c8' : '#e0e0e0'}; /* 90s Windows gray palette */
   color: #000;
-  cursor: pointer;
-  width: ${(props): string => (props.width ? props.width : 'auto')};
   font-family: 'Tahoma', sans-serif;
   font-size: 14px;
+  cursor: pointer;
+  width: ${(props): string => (props.width ? props.width : 'auto')};
   text-align: center;
-  text-shadow: none;
+  box-shadow:
+    inset -2px -2px 0px #fff,
+    /* Highlight effect */ inset 2px 2px 0px #a0a0a0,
+    /* Inner shadow for 3D effect */ 3px 3px 0px #000; /* Outer shadow for beveled effect */
   user-select: none;
+  transition: all 0.2s ease;
+
+  /* Hover effect */
+  &:hover {
+    background-color: #c0c0c0;
+    box-shadow:
+      inset -2px -2px 0px #e0e0e0,
+      inset 2px 2px 0px #808080,
+      3px 3px 0px #000;
+  }
 
   /* Active (pressed) state */
   &:active {
     box-shadow:
       inset 2px 2px 0px #fff,
-      inset -2px -2px 0px #bdbdbd; /* Sunken effect */
+      /* Reversed inner shadow */ inset -2px -2px 0px #a0a0a0,
+      2px 2px 0px #000; /* Reduced outer shadow for pressed effect */
     background-color: #a0a0a0;
   }
 
@@ -38,36 +49,36 @@ export const StyledButton = styled.button<ButtonProps>`
   ${(props): string =>
     props.$variant === 'secondary'
       ? `
-    background-color: #d0d0d0;
+    background-color: #e8e8e8;
     border-color: #808080;
   `
       : ''}
   ${(props): string =>
     props.$variant === 'success'
       ? `
-    background-color: #80c080;
-    border-color: #408040;
+    background-color: #90ee90; /* Light green */
+    border-color: #006400; /* Dark green */
   `
       : ''}
   ${(props): string =>
     props.$variant === 'danger'
       ? `
-    background-color: #e08080;
-    border-color: #a04040;
+    background-color: #ff7f7f; /* Light red */
+    border-color: #8b0000; /* Dark red */
   `
       : ''}
   ${(props): string =>
     props.$variant === 'warning'
       ? `
-    background-color: #f0e080;
-    border-color: #b0a040;
+    background-color: #ffeb3b; /* Yellow */
+    border-color: #f57c00; /* Orange */
   `
       : ''}
   ${(props): string =>
     props.$variant === 'info'
       ? `
-    background-color: #80a0e0;
-    border-color: #4060a0;
+    background-color: #87ceeb; /* Light blue */
+    border-color: #4682b4; /* Steel blue */
   `
       : ''}
 `
